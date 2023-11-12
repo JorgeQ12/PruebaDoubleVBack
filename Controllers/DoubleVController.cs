@@ -24,6 +24,10 @@ namespace PruebaDoubleV.Controllers
         [Route(nameof(DoubleVController.GetLoginUser))]
         public ResultResponse<Usuario> GetLoginUser(UsuarioDTO usuario) => _DoubleVAppService.GetLoginUser(usuario);
 
+        [HttpGet]
+        [Route(nameof(DoubleVController.GetTypeDocument))]
+        public ResultResponse<List<TipoIdentificacion>> GetTypeDocument() => _DoubleVAppService.GetTypeDocument();
+
         [HttpPost]
         [Route(nameof(DoubleVController.InsertPerson))]
         public ResultResponse<Persona> InsertPerson(PersonaDTO persona) => _DoubleVAppService.InsertPerson(persona);

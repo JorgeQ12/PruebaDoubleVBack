@@ -27,6 +27,18 @@ namespace PruebaDoubleV.Domain.Services
             }
         }
 
+        public List<TipoIdentificacion> GetTypeDocument()
+        {
+            try
+            {
+                return _context.TipoIdentificacion.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public Persona InsertPerson(Persona persona)
         {
             try

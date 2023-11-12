@@ -40,12 +40,16 @@ namespace PruebaDoubleV
             services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<DbContextDoubleV>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DbConeccionSQL")));
+
+            services.AddScoped<IDoubleVAppService, DoubleVAppService>();
+            services.AddScoped<IDoubleVDomainService, DoubleVDomainService>();
             services.AddCors(options => options.AddPolicy("AllowWebApp",
                             builder => builder.AllowAnyOrigin()
                                                 .AllowAnyHeader()
                                                 .AllowAnyMethod()));
-            services.AddScoped<IDoubleVAppService, DoubleVAppService>();
-            services.AddScoped<IDoubleVDomainService, DoubleVDomainService>();
+            services.AddControllers(mvcOpts =>
+            {
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,7 +61,7 @@ namespace PruebaDoubleV
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PruebaDoubleV v1"));
             }
-
+            app.UseCors("AllowWebApp");
             app.UseHttpsRedirection();
 
             app.UseRouting();

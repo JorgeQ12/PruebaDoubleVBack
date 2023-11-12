@@ -11,6 +11,7 @@ namespace PruebaDoubleV.Application.Services.Interfaces
     public interface IDoubleVAppService
     {
         ResultResponse<Usuario> GetLoginUser(UsuarioDTO usuario);
+        ResultResponse<List<TipoIdentificacion>> GetTypeDocument();
         ResultResponse<Persona> InsertPerson(PersonaDTO persona);
         ResultResponse<Usuario> InsertUser(UsuarioDTO usuario);
     }

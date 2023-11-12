@@ -39,6 +39,23 @@ namespace PruebaDoubleV.Application.Services
             }
         }
 
+        public ResultResponse<List<TipoIdentificacion>> GetTypeDocument()
+        {
+            try
+            {
+                List<TipoIdentificacion> tipoIdentificacion = _doubleVDomainService.GetTypeDocument();
+                if (!tipoIdentificacion.Any())
+                {
+                    return new ResultResponse<List<TipoIdentificacion>>(false, tipoIdentificacion);
+                }
+                return new ResultResponse<List<TipoIdentificacion>>(true, tipoIdentificacion);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public ResultResponse<Persona> InsertPerson(PersonaDTO persona)
         {
             try

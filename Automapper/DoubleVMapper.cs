@@ -19,6 +19,7 @@ namespace PruebaDoubleV.Automapper
                 .ForMember(target => target.NumeroIdentificacion, opt => opt.MapFrom(source => source.NumeroIdentificacionDTO))
                 .ForMember(target => target.Email, opt => opt.MapFrom(source => source.EmailDTO))
                 .ForMember(target => target.FechaCreacion, opt => opt.MapFrom(source => DateTime.Now))
+                .ForMember(target => target.TipoIdentificacion, opt => opt.MapFrom(source => source.TipoIdentificacionDTO))
                 .ForMember(target => target.IdentificacionCompleta, opt => opt.MapFrom(source => $"{source.TipoIdentificacionCodeDTO} - {source.NumeroIdentificacionDTO}"))
                 .ForMember(target => target.NombresApellidos, opt => opt.MapFrom(source => $"{source.NombresDTO} - {source.ApellidosDTO}"));
 
